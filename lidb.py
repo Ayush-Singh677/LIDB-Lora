@@ -15,7 +15,8 @@ class LoRALayer(nn.Module):
         self.Aux_init(self.Aaux)
         
         self.Atrain = nn.Parameter(torch.zeros(a_dim, lora_dim))
-
+        nn.init.kaiming_uniform_(self.Atrain, a=math.sqrt(5))
+        
         self.Btrain = nn.Parameter(torch.zeros(lora_dim, b_dim))
         nn.init.kaiming_uniform_(self.Btrain, a=math.sqrt(5))
         
